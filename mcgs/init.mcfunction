@@ -6,6 +6,7 @@ scoreboard objectives add fire dummy
 scoreboard objectives add fireseq dummy
 scoreboard objectives add fire2 stat.useItem.minecraft.bow
 scoreboard objectives add weapon dummy
+scoreboard objectives add prev dummy
 scoreboard objectives add ps dummy
 scoreboard objectives add str dummy
 scoreboard objectives add temp dummy

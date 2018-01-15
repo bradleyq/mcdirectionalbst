@@ -5,6 +5,9 @@ scoreboard players tag @e[type=zombie_pigman,tag=!undead] add undead
 scoreboard players tag @e[type=zombie,tag=!undead] add undead
 scoreboard players tag @e[type=skeleton,tag=!undead] add undead
 
+#update history
+execute @a ~ ~ ~ scoreboard players operation @s last = @s weapon
+
 #identify weapon
 scoreboard players set @a weapon 0
 scoreboard players set @a weapon 1 {Inventory:[{Slot:-106b,id:"minecraft:bow",Damage:1s,tag:{Unbreakable:1b}}]}
@@ -40,11 +43,12 @@ execute @a[score_str_min=0,score_str=0] ~ ~ ~ playsound block.chest.locked playe
 execute @a[score_str_min=0,score_str=0] ~ ~ ~ playsound block.piston.contract player @p ~ ~ ~ 0.1 0.8
 execute @a[score_str_min=0,score_str=0] ~ ~ ~ playsound block.anvil.place player @p ~ ~ ~ 0.07 2.0
 
+execute @a ~ ~ ~ scoreboard players operation @s temp = @s weapon
+execute @a ~ ~ ~ scoreboard players operation @s temp -= @s last
+scoreboard players set @a[score_temp=0,score_temp_min=0] fire 0
 scoreboard players set @a[score_weapon=0] fire 0
 scoreboard players set @a[score_weapon=0] clicked 0
 scoreboard players set @a[score_weapon=0] fire2 0
-#scoreboard players tag @a[tag=first,score_clicked_min=1] remove first
-#scoreboard players tag @a[tag=!first,score_clicked_min=1,score_fire=0] add first
 
 scoreboard players add @a[score_clicked_min=1,score_weapon_min=1,score_weapon=1] fire 3
 scoreboard players set @a[score_clicked_min=1,score_fire=0,score_ftimer=0] fire 1
